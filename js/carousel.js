@@ -25,6 +25,12 @@ nextButton.addEventListener('click',event =>{
 });
 */
 
+const moveToSlide = (track,currentSlide,targetSlide)=>{
+  track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+  currentSlide.removeClass('current-slide');
+  targetSlide.classList.add('current-slide');
+}
+/*
 nextButton.click(function(){
   const currentSlide=$('.carousel_track').find('.current-slide');
   const nextSlide = currentSlide.next()[0];
@@ -33,8 +39,18 @@ nextButton.click(function(){
   currentSlide.removeClass('current-slide');
   nextSlide.classList.add('current-slide');
 });
+*/
+
+nextButton.click(function(){
+  const currentSlide=$('.carousel_track').find('.current-slide');
+  const nextSlide = currentSlide.next()[0];
+  moveToSlide(track,currentSlide,nextSlide);
+});
+
 
 previousButton.click(function(){
-
+  const currentSlide=$('.carousel_track').find('.current-slide');
+  const previousSlide = currentSlide.prev()[0];
+  moveToSlide(track,currentSlide,previousSlide);
 });
 
